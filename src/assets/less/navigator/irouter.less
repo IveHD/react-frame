@@ -1,0 +1,42 @@
+@menu-height: 100px;
+.router-wrapper{
+	.seal {
+		height: @menu-height;
+	}
+	.first-grade-ul {
+		text-align: center;
+		height: @menu-height;
+		position: fixed;
+		top: 0px;
+		list-style-type: none;
+		& > li {
+			float: left;
+			margin: 20px;
+			padding: 10px;
+			.second-grade-ul {
+				padding-top: 30px;
+			}
+			& > a{
+				display: block;
+				width: 80px;
+				height: 30px;
+			}
+			& > a:hover {
+				background-color: black;
+			}
+			.avtice-first-grade{
+				background-color: black;
+			}
+			.active-second-grade{
+				background-color: green;
+			}
+		}
+		.second-grade-show {
+			display: block;
+		}
+		.second-grade-hide {
+			display: none;
+		}
+	}
+}
+

@@ -1,12 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-export default class Home extends React.Component{
+export default class PageReview extends React.Component{
+	componentWillMount () {
+	}
 	render(){
 		return (
 			<div>
-				this is the Home Page...
+				PageReview:
 			</div>
 		)
-	}
+	}	
 }
