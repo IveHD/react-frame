@@ -1,11 +1,33 @@
 import React from 'react';
-import IRouter from '../navigator/IRouter';
-import resetStyle from '@assets/less/reset.less';
-import global from '@assets/less/global.less';
-export default class App extends React.Component {
+import { connect } from 'react-redux';
+import {fetchSubject} from '@src/action/subject.js';
+import Header from './header';
+import Content from './content';
+import {BrowserRouter as Router} from 'react-router-dom';
+import Footer from './footer';
+
+require('@asset/less/reset.less');
+require('@asset/less/global.less');
+class App extends React.Component {
+	componentDidMount () {
+		this.props.dispatch(fetchSubject());
+	}
 	render(){
 		return (
-			<IRouter></IRouter>
+			<Router basename="/#/">
+				<div>
+					<Header subject={this.props.subject}/>
+					<Content/>
+					<Footer/>
+				</div>
+			</Router>
 		)
 	}
 }
+const mapStateToProps = (state) => {
+    return {
+    	subject: state.subject.subject
+	}
+};
+
+export default connect(mapStateToProps)(App)

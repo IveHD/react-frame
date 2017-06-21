@@ -1,0 +1,26 @@
+@menu-height: 60px;
+
+.header-wrapper {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: @menu-height;
+  background-color: #0fcac8;
+  z-index: 10000;
+  .profile {
+    vertical-align: middle;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    border-left: 1px #fff solid;
+    padding-left: 20px;
+    height: 100%;
+    img {
+      margin-top: 10px;
+    }
+  }
+}
+.seal {
+  height: @menu-height;
+  display: block;
+}

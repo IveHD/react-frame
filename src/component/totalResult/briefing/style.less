@@ -1,0 +1,98 @@
+.total-briefing-wrapper {
+  height: 242px;
+  width: 100%;
+  background-color: #f6f5ef;
+  .briefing-vice-wrapper{
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    .avatar {
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        white-space: nowrap;
+      }
+    }
+    .result-wrapper {
+      width: 520px;
+      height: 152px;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 0px 69px;
+      .result-vice-wrapper {
+        margin-top: 40px;
+        .score-wrapper {
+          margin: auto 0px;
+          float: left;
+          width: 220px;
+          text-align: center;
+          position: relative;
+          .score {
+            font-size: 50px;
+            line-height: 1;
+            position: relative;
+            .user-manage {
+              position: absolute;
+              top:  -13px;
+              right: -14px;
+              background-color: #fa6042;
+              border-radius: 100%;
+              line-height: 30px;
+              width: 30px;
+              height: 30px;
+              font-size: 12px;
+              color: #fff;
+            }
+          }
+          .this-time {
+            font-size: 12px;
+            margin-top: 10px;
+          }
+        }
+        .line {
+          position: static;
+          border-left: 1px solid #ccc;
+          height: 70px;
+          width: 0px;
+          vertical-align: middle;
+          display: inline-block;
+          float: left;
+        }
+        .result-fields {
+          float: left;
+          margin-left: 60px;
+          font-size: 12px;
+          .field-text {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .trend {
+      position: relative;
+      .trend-number {
+        display: inline-block;
+        position: absolute;
+        top: 0px;
+        left: 40%;
+        font-size: 50px;
+        font-family: inherit;
+        .trend-number-sign {
+          font-size: 20px;
+        }
+      }
+      .trend-description {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 9px;
+        span {
+          color: #ff3737;
+        }
+      }
+    }
+  }
+}

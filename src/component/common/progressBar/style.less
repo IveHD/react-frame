@@ -1,0 +1,23 @@
+.progress-bar-wrapper {
+  display: inline;
+  .progress-bar-outer {
+    display: inline-block;
+    border: 1px rgb(212, 212, 212) solid;
+    .progress-inner {
+      height: 100%;
+      background-color: rgb(0, 204, 201);
+      animation: progressWidth 1s 1;
+    }
+  }
+  .progress-percent {
+    display: inline;
+    color: #0fcac8;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+}
+
+@keyframes progressWidth
+{
+  from {width: 0px}
+}
