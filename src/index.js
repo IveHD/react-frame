@@ -2,13 +2,9 @@ import React from 'react';
 import {render} from 'react-dom';
 import App from './container/App';
 
-import {Provider} from 'react-redux';
-import configureStore from './store/storeConfig.js';
+import './index.less';
 
-let store = configureStore();
-render(
-	<Provider store={store}>
-		<App/>
-	</Provider>, 
-	document.getElementById('root')
-);
+import { has } from '@src/util/permission/index';
+window.has = has;  //判断权限的函数挂载到window上，组建内随时随地可以使用
+
+render(<App/>, document.getElementById('root'));

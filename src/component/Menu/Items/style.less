@@ -1,0 +1,53 @@
+.h-menu-items {
+	.sub-label {
+		background-color: #404040;
+		line-height: 50px;
+		font-size: 16px;
+		font-family: "\5FAE\8F6F\96C5\9ED1", "Microsoft YaHei", PingHei, Arial, Helvetica, STHeiti, sans-serif;
+		color: rgba(255, 255, 255, 0.9);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		cursor: pointer;
+		position: relative;
+		&:active {
+			background-color: red;
+		}
+		&:hover {
+			background-color: #666666;
+			transition: background-color .2s;
+		}
+		&:after {
+			font-family: "anticon" !important;
+			text-transform: none;
+			text-rendering: auto;
+			content: ">";
+			display: inline-block;
+			position: absolute;
+			right: 40px;
+			font-size: 16px;
+			color: #fff;
+			transform: scale(0.66666667) rotate(1deg);
+			-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=1, M12=0, M21=0, M22=1)";
+			zoom: 1;
+		}
+	}
+	.m-active, .m-active:hover {
+		background-color: #20a0ff;
+	}
+	.sub-label + .sub-chidren {
+		background-color: #333333;
+		&>div{
+			.m-item {
+				background-color: #333333;
+				&:hover {
+					background-color: #666666;
+					transition: background-color .2s;
+				}
+			}
+		}
+	}
+	&>div.sub-chidren {
+		display: none;
+	}
+}

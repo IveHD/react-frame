@@ -1,33 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Navigator from '../../component/header/navigator';
-import Avatar from '@component/common/avatar';
-require('./style.less');
-class Header extends React.Component{
-    render() {
-        return (
-            <div>
-                <div className="header-wrapper">
-                    <div style={{position: 'absolute'}}>
-                        <img src={require('@asset/image/logo.png')} alt=""/>
-                        <img src={require('@asset/image/slogan.png')} alt=""/>
-                    </div>
-                    {
-                        this.props.subject.length > 0 ? (
-                            <Navigator subject={this.props.subject}/>
-                        ) : ''
-                    }
-                    <Avatar className="profile"/>
-                </div>
-                <div className="seal"></div>
-            </div>
-        )
-    }
+import { Icon } from 'antd';
+import './style.less';
+import webApi from '@src/webApi';
+export default class Header extends React.Component {
+	state = {
+		expendShow: false
+	}
+	onLogout(){
+        location.href = '/logout'
+	}
+	render() {
+		return (
+			<div id="header-wrapper">
+				<div className="my-account" onMouseOver={ () => {this.setState({expendShow: true})} } onMouseOut={ () => {this.setState({expendShow: false})} }>
+					<div className="my-account-text" ><Icon type="user" /><span style={{fontSize: 18}}>我的账号</span></div>
+					<div className="exit" style={{display: this.state.expendShow ? 'block' : 'none'}} ><a onClick={this.onLogout.bind(this)}>安全退出</a></div>
+				</div>
+			</div>
+		);
+	}
 }
-
-const mapStateToProps = (state) => {
-    return {
-        subject: state.subject.data
-    }
-};
-export default connect(mapStateToProps)(Header)

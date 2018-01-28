@@ -1,26 +1,32 @@
-@menu-height: 60px;
-
-.header-wrapper {
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: @menu-height;
-  background-color: #0fcac8;
-  z-index: 10000;
-  .profile {
-    vertical-align: middle;
-    display: inline-block;
-    position: absolute;
-    right: 20px;
-    border-left: 1px #fff solid;
-    padding-left: 20px;
-    height: 100%;
-    img {
-      margin-top: 10px;
-    }
-  }
-}
-.seal {
-  height: @menu-height;
-  display: block;
+#header-wrapper {
+	height: 40px;
+	border-bottom: 1px solid rgb(181, 181, 181);
+	text-align: right;
+	font-size: 18px;
+	padding-right: 20px;
+	.my-account {
+		display: inline-block;
+		position: relative;
+		.my-account-text{
+			cursor: pointer;
+			&:hover {
+				border-bottom: 1px solid #108ee9;
+			}
+		}
+		.exit {
+			border: 1px #c3c3c3 solid;
+			margin-top: 5px;
+			width: '100%';
+			text-align: center;
+			font-size: 15px;
+			background-color: #fff;
+			&:hover {
+				cursor: pointer;
+				background-color: #c3c3c3;
+			}
+			a {
+				color: #555;
+			}
+		}
+	}
 }

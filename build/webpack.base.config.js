@@ -3,87 +3,78 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractLESS = new ExtractTextPlugin('style/[name].style.[hash:4].css');
+// const extractLESS = new ExtractTextPlugin('style/[name].style.css');
 
-var Dashboard = require('webpack-dashboard');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var dashboard = new Dashboard();
+const HappyPack = require('happypack');
+// const os = require("os")
+// const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
+// const Dashboard = require('webpack-dashboard');
+// const DashboardPlugin = require('webpack-dashboard/plugin');
+// const dashboard = new Dashboard();
+// 
+// 这两个是用来做打包分析的
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
 // var StatsPlugin = require('stats-webpack-plugin');
 module.exports = {
-	entry: {
-		main: CONFIG.ENTRY_PATH,
-        vendor: ['react', 'react-dom'],
-        ECharts: 'ECharts'
-		// antd: 'antd',
-	},
+    entry: {
+        main: CONFIG.ENTRY_PATH,
+        'cmpt.lib': 'element-react',
+        'cmpt.style': 'element-theme-default'
+    },
+    output: {
+        filename: '[name].[hash:4].js',
+        // filename: '[name].js',
+        path: CONFIG.OUTPUT_PATH
+    },
 
-	output: {
-		filename: '[name].[hash:8].js',
-		path: CONFIG.OUTPUT_PATH
-	},
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'],
+        alias: {
+            '@src': path.resolve(__dirname, '../src'),
+            '@component': path.resolve(__dirname, '../src/component'),
+            '@container': path.resolve(__dirname, '../src/container'),
+            '@asset': path.resolve(__dirname, '../src/asset')
+        }
+    },
 
-	resolve: {
-		extensions: ['.js', '.jsx', '.json'],
-		alias: {
-			'@src': path.resolve(__dirname, '../src'),
-			'@component': path.resolve(__dirname, '../src/component'),
-			'@container': path.resolve(__dirname, '../src/container'),
-			'@asset': path.resolve(__dirname, '../src/asset')
-		}
-	},
-
-	module: {
-		loaders: [{
-			test: /\.(js|jsx)$/,
-			exclude: /(node_modules)/,
-			loader: 'babel-loader',
-			query: {
-				"presets": ["react", "es2015", "stage-0"],
-				"plugins": [
-					["import", [
-                        {
-                            "libraryName": "antd",
-                            "libraryDirectory": "lib",   // default: lib
-                            "style": true
-                        },
-                        {
-                            "libraryName": "antd-mobile",
-                            "libraryDirectory": "component",
-                        },
-                    ]]
-				]
-			}
-		}, {
-			test: /\.(less|css)$/,
-			use: extractLESS.extract([ 'css-loader', 'less-loader' ])
-		}, {
-			test: /\.(png|jpg)$/,
-			loader: 'url-loader?limit=8198&name=images/[name].[ext]'
-		}]
-	},
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-			}
-		}),
-        new webpack.optimize.CommonsChunkPlugin(['vendor', 'ECharts']),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: 'antd' // 指定公共 bundle 的名字。
-		// }),
-		new webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: './src/index.html',
+    module: {
+        rules: [{
+            test: /\.(js|jsx)$/,
+            exclude: /(node_modules)/,
+            use: ['happypack/loader?id=babel']  //对js|jsx的loader处理使用HappyPack插件做多线程
+        }, {
+            test: /\.(less|css)$/,
+            use: ["style-loader", "css-loader?minimize", "less-loader?minimize"]
+        }, {
+            test: /\.(png|jpg)$/,
+            exclude: /(node_modules)/,
+            loader: 'url-loader?limit=8198&name=images/[name].[ext]'
+        }, {
+            test: /\.(eot|svg|ttf|woff|woff2)\w*/,
+            loader: 'url-loader?limit=1000000'
+        }]
+    },
+    plugins: [
+        new HappyPack({
+            id: 'babel',
+            loaders: ['babel-loader']
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['cmpt.lib', 'cmpt.style']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './src/index.html',
             favicon: path.resolve(__dirname, '../src/asset/image/favicon.png'),
-			inject: true
-		}),
-        new DashboardPlugin(dashboard.setData),
+            inject: true
+        }),
+        // new DashboardPlugin(dashboard.setData),
+        // new BundleAnalyzerPlugin(),
         // new StatsPlugin('stats.json', {
         //     chunkModules: true,
         //     exclude: [/node_modules[\\\/]react/]
         // }),
-		extractLESS
-	]
+        // extractLESS
+    ]
 };
