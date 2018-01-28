@@ -8,7 +8,7 @@ let proxy_http = (path, method, data, headers) => new Promise((resolve, reject) 
 		_data = qs.stringify(data);
 	}
 	let option = {
-		hostname: 'web.paoject.com',  //这里写请求服务器的域名
+		hostname: 'web.project.com',  //这里写请求服务器的域名
 		// port: 9925,
 		path: method == 'GET' ? (path.split('?')[0] + '?' + _data) : path.split('?')[0],
 		method,
