@@ -19,7 +19,9 @@
 1.基于react-router的页面跳转控制<br/>
 2.可配置的多级菜单组件<br/>
 3.基于cookie的权限控制功能<br/>
-4.引入element-react、antd两个常用ui组件库(对element-react做了通用代码抽离，antd做了组件按需加载)<br/>
+4.http请求功能封装<br/>
+5.引入element-react、antd两个常用ui组件库(对element-react做了通用代码抽离，antd做了组件按需加载)<br/>
+6.集成less
 
 # 使用说明 
 ### 安装npm依赖
