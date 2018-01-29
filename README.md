@@ -30,7 +30,7 @@
 ### 开发模式启动(使用data.json mock数据)
 	npm run dev
 	
-### 开发模式启动(使用代理数据)
+### 开发模式启动(使用代理转发)
 	修改'build/proxy.js'的http option配置(hostname属性和header自定义配置)
 	npm run dev --pxy
 	
