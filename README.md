@@ -32,7 +32,7 @@
 	
 ### 开发模式启动(使用代理转发)
 	修改'build/proxy.js'的http option配置(hostname属性和header自定义配置)
-	npm run dev --pxy
+	npm run dev pxy
 	
 ### 生产环境打包
 	'build/config.js'可对打包入口和输出路径做配置。
