@@ -1,22 +1,4 @@
 {
-  "presets": ["react", ["env",{
-        	"modules": false		//做tree Shaking
-    	}],
-    	"stage-0"],
-  "ignore": ["../src/ueditor/ueditor.all.min.js"],
-  "plugins": [
-		["import", [
-			{
-				"libraryName": "antd",
-				"libraryDirectory": "lib",
-				"style": true
-			}
-		]],
-		[
-		"transform-runtime",
-			{
-				"polyfill": false
-			}
-		]
-	]
+	"presets": ["react", "env"],
+	"plugins": ["syntax-dynamic-import"]
 }
