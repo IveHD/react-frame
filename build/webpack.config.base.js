@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
 	entry: CONFIG.ENTRY_PATH,
 	output: {
-		filename: '[name]-[hash:4].js',
+		filename: '[name].[hash:4].js',
 		path: CONFIG.OUTPUT_PATH,
 		publicPath: '/'
 	},
