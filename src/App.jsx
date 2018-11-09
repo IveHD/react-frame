@@ -1,22 +1,20 @@
 import React from 'react';
-import Load from '@src/route';
-// import Cmpt01 from '@component/cmpt01';
-// import Cmpt02 from '@component/cmpt002';
-const Cmpt01 = require('@component/cmpt01');
-// const Cmpt02 = Load('@component/cmpt002');
-
-var p = new Promise((resolve, reject) => {
-	resolve(require('@component/cmpt01'));
-}).then(e => {console.log(e)});
-
-// const A = Load();
-debugger
-console.log(Cmpt01);
+import Header from '@component/header';
+import Menu from '@component/menu';
+import 'antd/lib/menu/style/css';
 export default class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Cmpt01.default />
+				<div className="left-wrapper" style={{width: 200, height: '100%', border: '1px red solid', position: 'fixed', left: 0, top: 0}}>
+					<Menu/>
+				</div>
+				<div className="right-wrapper">
+					<Header />
+					<div>
+						<div style={{height: 500}}>asdasd</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
