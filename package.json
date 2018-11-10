@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && node build/build.js",
+    "build:analyse": "rimraf dist && cross-env SET_UP_ANALYSIS=true node build/build.js",
     "dev": "node build/dev.server.js",
     "dev:pxy": "cross-env API_PROXY=true node build/dev.server.js"
   },
@@ -30,6 +31,7 @@
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.1.4"

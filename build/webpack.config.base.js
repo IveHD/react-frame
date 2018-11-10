@@ -1,5 +1,5 @@
 const CONFIG = require('./const');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
         alias: {
             '@src': path.resolve(__dirname, '../src'),
             '@component': path.resolve(__dirname, '../src/component'),
-            '@container': path.resolve(__dirname, '../src/container'),
+            '@view': path.resolve(__dirname, '../src/view'),
             '@asset': path.resolve(__dirname, '../src/asset')
         }
     },
